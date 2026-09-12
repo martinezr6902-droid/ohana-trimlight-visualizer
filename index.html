@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#071b22" />
+  <meta name="description" content="Preview permanent Trimlight on your Oahu home with Ohana Trimlight." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Ohana Trimlight | See Your Home in Lights</title>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Ohana Trimlight home"><span class="brand-mark">O</span><span>OHANA <b>TRIMLIGHT</b></span></a>
+    <a class="nav-cta" href="#estimate">Free estimate</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow">OʻAHU'S PERMANENT LIGHTING EXPERIENCE</div>
+      <h1>See your home<br/><em>glow different.</em></h1>
+      <p>Upload a photo, trace your roofline, and preview app-controlled permanent lighting before you buy.</p>
+      <div class="hero-actions"><label class="button primary" for="photoInput">Upload house photo</label><a class="button ghost" href="#how">How it works</a></div>
+      <div class="trust"><span>✓ Photo stays on your device</span><span>✓ Free to try</span><span>✓ Financing available</span></div>
+    </section>
+
+    <section class="studio" aria-label="Trimlight photo visualizer">
+      <div class="studio-head">
+        <div><span class="step">01</span><h2>Create your lighting preview</h2></div>
+        <button id="resetBtn" class="text-button" type="button">Start over</button>
+      </div>
+
+      <div class="workspace">
+        <div class="canvas-card">
+          <input id="photoInput" type="file" accept="image/*" hidden />
+          <div id="emptyState" class="empty-state">
+            <div class="upload-icon">⌁</div><h3>Drop in a front-facing house photo</h3>
+            <p>Evening or dusk photos give the most realistic glow.</p>
+            <label class="button primary" for="photoInput">Choose photo</label>
+          </div>
+          <canvas id="canvas" aria-label="House lighting preview editor"></canvas>
+          <div id="canvasHint" class="canvas-hint">Tap along each roofline. Double-tap or press “Finish line” to start a new section.</div>
+        </div>
+
+        <aside class="controls">
+          <div class="control-block">
+            <div class="control-title"><span class="step">02</span><h3>Choose a look</h3></div>
+            <div id="presets" class="presets" role="radiogroup" aria-label="Lighting colors">
+              <button class="preset active" data-colors="#fff1c7" aria-pressed="true"><i style="--c:#fff1c7"></i>Warm white</button>
+              <button class="preset" data-colors="#ff2f3d,#ffffff,#246bff" aria-pressed="false"><i class="patriot"></i>Patriotic</button>
+              <button class="preset" data-colors="#ff253a,#24df6b" aria-pressed="false"><i class="christmas"></i>Christmas</button>
+              <button class="preset" data-colors="#ff3a99,#8b5cff,#30dfff,#ffd33d" aria-pressed="false"><i class="party"></i>Celebration</button>
+            </div>
+          </div>
+
+          <div class="control-block sliders">
+            <label>Light spacing <output id="spacingOut">18px</output><input id="spacing" type="range" min="8" max="40" value="18" /></label>
+            <label>Glow strength <output id="glowOut">70%</output><input id="glow" type="range" min="0" max="100" value="70" /></label>
+            <label>Photo darkness <output id="darkOut">35%</output><input id="darkness" type="range" min="0" max="70" value="35" /></label>
+          </div>
+
+          <div class="editor-actions">
+            <button id="finishBtn" class="button secondary" type="button">Finish line</button>
+            <button id="undoBtn" class="button secondary" type="button">Undo point</button>
+            <button id="downloadBtn" class="button primary wide" type="button">Download mockup</button>
+          </div>
+          <p class="microcopy">Tip: trace every eave, peak, and garage edge where you want lights installed.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="how" class="how">
+      <span class="eyebrow">FROM PHOTO TO WOW</span><h2>Picture it before we install it.</h2>
+      <div class="how-grid">
+        <article><b>1</b><h3>Upload</h3><p>Use a clear photo showing the full front of your home.</p></article>
+        <article><b>2</b><h3>Trace & style</h3><p>Tap along the roofline and try your favorite colors.</p></article>
+        <article><b>3</b><h3>Save & share</h3><p>Download your mockup and send it with your estimate request.</p></article>
+      </div>
+    </section>
+
+    <section id="estimate" class="estimate">
+      <div><span class="eyebrow">READY TO MAKE IT REAL?</span><h2>Get a free Oʻahu estimate.</h2><p>Permanent. App-controlled. Nearly invisible during da day, unforgettable at night.</p></div>
+      <form id="estimateForm">
+        <label>Name<input name="name" required autocomplete="name" /></label>
+        <label>Phone<input name="phone" type="tel" required autocomplete="tel" /></label>
+        <label>Email<input name="email" type="email" autocomplete="email" /></label>
+        <label>Oʻahu neighborhood<input name="area" placeholder="e.g. Ewa Beach" /></label>
+        <label class="full">Anything we should know?<textarea name="notes" rows="3" placeholder="Areas you want lit, preferred colors, timing…"></textarea></label>
+        <button class="button primary full" type="submit">Prepare estimate request</button>
+        <p id="formStatus" class="form-status full" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer><span>OHANA TRIMLIGHT</span><span>Permanent lighting for every moment.</span></footer>
+  <script src="/app.js"></script>
+</body>
+</html>
